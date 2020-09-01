@@ -7,12 +7,12 @@ function search() {
 
     // Test url
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Bellevue&units=imperial&appid=" + key;
-    
+    var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=Bellevue&units=imperial&appid=" + key;
+
     $.ajax({
-        url: queryURL,
+        url: weatherURL,
         type: "GET",
-    }).then(function(response) {
+    }).then(function (response) {
         // Print weather information
         console.log(response);
         console.log(response.weather[0].main);
@@ -21,18 +21,43 @@ function search() {
         console.log(response.wind.speed + " miles per hour");
 
 
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
 
         $.ajax({
             url: uvURL,
             type: "GET",
-        }).then(function(response) {
+        }).then(function (response) {
             // Print UV information
-            // console.log(response);
+            console.log(response);
             console.log("UV index: " + response.value);
         });
+
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=Bellevue&units=imperial&appid=" + key;
+
+        $.ajax({
+            url: forecastURL,
+            type: "GET",
+        }).then(function(response) {
+            // Print dates and temperatures for next five days
+            console.log(response);
+            console.log(response.list[2].dt_txt);
+            console.log(response.list[2].main.temp);
+            console.log(response.list[10].dt_txt);
+            console.log(response.list[10].main.temp);
+            console.log(response.list[18].dt_txt);
+            console.log(response.list[18].main.temp);
+            console.log(response.list[26].dt_txt);
+            console.log(response.list[26].main.temp);
+            console.log(response.list[34].dt_txt);
+            console.log(response.list[34].main.temp);
+        });
+
     });
+
+
+
 };
 
 search();
+
 // Function that displays city of interest
