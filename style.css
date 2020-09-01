@@ -4,3 +4,15 @@
     color: white;
     padding: 5px 0px 5px 0px;
 }
+
+button {
+    margin: 10px;
+}
+
+.city {
+    /* Testing to see what happens to added buttons */
+    background: green;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}

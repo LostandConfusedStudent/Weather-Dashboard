@@ -1,6 +1,34 @@
 // Define variables
-
+var yourCity = [];
 // Function to search city of interest
+
+function city() {
+
+    $("#cityView").empty();
+
+    for (var i = 0; i < yourCity.length; i++) {
+
+        var a = $("<button>");
+
+        a.addClass("city");
+
+        a.attr("cityInput", yourCity[i]);
+
+        a.text(yourCity[i]);
+
+
+        $("#cityView").append(a);
+    }
+}
+
+$("#searchButton").on("click", function(event) {
+    event.preventDefault();
+
+    var cities = $("#yourCity").val().trim();
+    yourCity.push(cities);
+
+    city();
+});
 
 function search() {
     const key = "c0bfbe029f5184838d438a684303b5b2";
