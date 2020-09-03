@@ -1,22 +1,21 @@
-// Define variables
+// Define global variables
 var yourCity = [];
+
+var key = "c0bfbe029f5184838d438a684303b5b2";
+var units = "&units=imperial&appid=";
+
 // Function to search city of interest
 
-function city() {
+function citySearch() {
 
     $("#cityView").empty();
 
     for (var i = 0; i < yourCity.length; i++) {
 
-        var a = $("<button>");
-
+        var a = $("<li>");
         a.addClass("city");
-
-        a.attr("cityInput", yourCity[i]);
-
+        a.attr("yourCityInput", yourCity[i]);
         a.text(yourCity[i]);
-
-
         $("#cityView").append(a);
     }
 }
@@ -24,18 +23,12 @@ function city() {
 $("#searchButton").on("click", function(event) {
     event.preventDefault();
 
-    var cities = $("#yourCity").val().trim();
-    yourCity.push(cities);
+    var cityInput = $("#yourCity").val();
+    yourCity.push(cityInput);
 
-    city();
-});
 
-function search() {
-    const key = "c0bfbe029f5184838d438a684303b5b2";
 
-    // Test url
-
-    var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=Bellevue&units=imperial&appid=" + key;
+    var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" +  cityInput + units + key;
 
     $.ajax({
         url: weatherURL,
@@ -60,7 +53,7 @@ function search() {
             console.log("UV index: " + response.value);
         });
 
-        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=Bellevue&units=imperial&appid=" + key;
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInput + "&units=imperial&appid=" + key;
 
         $.ajax({
             url: forecastURL,
@@ -82,10 +75,7 @@ function search() {
 
     });
 
+    citySearch();
+    console.log(yourCity);
 
-
-};
-
-search();
-
-// Function that displays city of interest
+});
