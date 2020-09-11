@@ -20,7 +20,7 @@ function citySearch() {
     }
 }
 
-$("#searchButton").on("click", function(event) {
+$("#searchButton").on("click", function (event) {
     event.preventDefault();
 
     var cityInput = $("#yourCity").val();
@@ -28,7 +28,7 @@ $("#searchButton").on("click", function(event) {
 
 
 
-    var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" +  cityInput + units + key;
+    var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + units + key;
 
     $.ajax({
         url: weatherURL,
@@ -58,7 +58,7 @@ $("#searchButton").on("click", function(event) {
         $.ajax({
             url: forecastURL,
             type: "GET",
-        }).then(function(response) {
+        }).then(function (response) {
             // Print dates and temperatures for next five days
             console.log(response);
             console.log(response.list[2].dt_txt);
@@ -78,4 +78,10 @@ $("#searchButton").on("click", function(event) {
     citySearch();
     console.log(yourCity);
 
+    // Button to erase input from local storage
+    $("#clearHistory").on("click", function () {
+        localStorage.clear();
+        citySearch();
+        console.log("Clear button pressed");
+    });
 });
