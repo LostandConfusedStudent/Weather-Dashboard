@@ -11,9 +11,14 @@ button {
     margin: 10px;
 }
 
+#yourCity {
+    margin-left: 10px;
+}
+
 /* This is the table formed from user's city input */
-.city {
+.city, .cityTable, #cityView {
     color: #333;
     display: flex;
     flex-direction: column;
+    width: 30%;
 }
