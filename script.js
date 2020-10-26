@@ -44,6 +44,15 @@ $("#searchButton").on("click", function (event) {
         console.log(response.wind.speed + " miles per hour");
         console.log(response.weather[0].description);
 
+        // city
+        // wind
+        // humidity
+        // temp
+        $(".city").html("<h1>" + response.name + "</h1>");
+        $(".wind").text("Wind Speed: " + response.wind.speed + " miles per hour");
+        $(".humidity").text("Humidity: " + response.main.humidity + "%");
+        $(".temp").text("Temperature: " + response.main.temp + "\u00B0 Fahrenheit");
+
         // url for uv information
         var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
 
