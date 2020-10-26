@@ -94,6 +94,11 @@ $("#searchButton").on("click", function (event) {
     // Button to erase input from local storage
     $("#clearHistory").on("click", function () {
         console.log("Clear button pressed");
+        $(".city").empty();
+        $(".wind").empty();
+        $(".humidity").empty();
+        $(".temp").empty();
+        $(".cityTable").empty();
     });
 });
 
