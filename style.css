@@ -22,3 +22,12 @@ button {
     flex-direction: column;
     width: 30%;
 }
+
+.search {
+    width: 40%;
+    float: left;
+}
+
+.weather {
+    margin: 0 auto;
+}
