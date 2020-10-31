@@ -48,10 +48,10 @@ $("#searchButton").on("click", function (event) {
         // wind
         // humidity
         // temp
-        $(".city").html("<h1>" + response.name + "</h1>");
-        $(".wind").text("Wind Speed: " + response.wind.speed + " miles per hour");
-        $(".humidity").text("Humidity: " + response.main.humidity + "%");
+        $(".city").html("<h1>" + response.name + " Today</h1>");
         $(".temp").text("Temperature: " + response.main.temp + "\u00B0 Fahrenheit");
+        $(".humidity").text("Humidity: " + response.main.humidity + "%");
+        $(".wind").text("Wind Speed: " + response.wind.speed + " miles per hour");
 
         // url for uv information
         var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
@@ -74,16 +74,61 @@ $("#searchButton").on("click", function (event) {
         }).then(function (response) {
             // Print dates and temperatures for next five days
             console.log(response);
-            console.log(response.list[2].dt_txt);
-            console.log(response.list[2].main.temp);
-            console.log(response.list[10].dt_txt);
-            console.log(response.list[10].main.temp);
-            console.log(response.list[18].dt_txt);
-            console.log(response.list[18].main.temp);
-            console.log(response.list[26].dt_txt);
-            console.log(response.list[26].main.temp);
-            console.log(response.list[34].dt_txt);
-            console.log(response.list[34].main.temp);
+            console.log("Date: " + response.list[1].dt_txt);
+            console.log("Temperature: " + response.list[1].main.temp);
+            console.log("Humidity: " + response.list[1].main.humidity);
+            console.log("Wind Speed: " + response.list[1].wind.speed);
+            console.log("------------------------------")
+
+            console.log("Date: " + response.list[9].dt_txt);
+            console.log("Temperature: " + response.list[9].main.temp);
+            console.log("Humidity: " + response.list[9].main.humidity);
+            console.log("Wind Speed: " + response.list[9].wind.speed);
+            console.log("------------------------------")
+
+            console.log("Date: " + response.list[17].dt_txt);
+            console.log("Temperature: " + response.list[17].main.temp);
+            console.log("Humidity: " + response.list[17].main.humidity);
+            console.log("Wind Speed: " + response.list[17].wind.speed);
+            console.log("------------------------------")
+            
+            console.log("Date: " + response.list[25].dt_txt);
+            console.log("Temperature: " + response.list[25].main.temp);
+            console.log("Humidity: " + response.list[25].main.humidity);
+            console.log("Wind Speed: " + response.list[25].wind.speed);
+            console.log("------------------------------")
+
+            console.log("Date: " + response.list[33].dt_txt);
+            console.log("Temperature: " + response.list[33].main.temp);
+            console.log("Humidity: " + response.list[33].main.humidity);
+            console.log("Wind Speed: " + response.list[33].wind.speed);
+            console.log("------------------------------")
+
+            $(".dateOne").text("Date: " + response.list[1].dt_txt);
+            $(".tempOne").text("Temperature: " + response.list[1].main.temp + "\u00B0 Fahrenheit");
+            $(".humidityOne").text("Humidity: " + response.list[1].main.humidity + "%");
+            $(".windOne").text("Wind Speed: " + response.list[1].wind.speed + " miles per hour");
+
+            $(".dateTwo").text("Date: " + response.list[9].dt_txt);
+            $(".tempTwo").text("Temperature: " + response.list[9].main.temp + "\u00B0 Fahrenheit");
+            $(".humidityTwo").text("Humidity: " + response.list[9].main.humidity + "%");
+            $(".windTwo").text("Wind Speed: " + response.list[9].wind.speed + " miles per hour");
+
+            $(".dateThree").text("Date: " + response.list[17].dt_txt);
+            $(".tempThree").text("Temperature: " + response.list[17].main.temp + "\u00B0 Fahrenheit");
+            $(".humidityThree").text("Humidity: " + response.list[17].main.humidity + "%");
+            $(".windThree").text("Wind Speed: " + response.list[17].wind.speed + " miles per hour");
+
+            $(".dateFour").text("Date: " + response.list[25].dt_txt);
+            $(".tempFour").text("Temperature: " + response.list[25].main.temp + "\u00B0 Fahrenheit");
+            $(".humidityFour").text("Humidity: " + response.list[25].main.humidity + "%");
+            $(".windFour").text("Wind Speed: " + response.list[25].wind.speed + " miles per hour");
+
+            $(".dateFive").text("Date: " + response.list[33].dt_txt);
+            $(".tempFive").text("Temperature: " + response.list[33].main.temp + "\u00B0 Fahrenheit");
+            $(".humidityFive").text("Humidity: " + response.list[33].main.humidity + "%");
+            $(".windFive").text("Wind Speed: " + response.list[33].wind.speed + " miles per hour");
+
         });
 
     });

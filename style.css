@@ -24,10 +24,32 @@ button {
 }
 
 .search {
-    width: 40%;
+    width: 35%;
     float: left;
 }
 
-.weather {
+.search-container {
+    position: relative;
+}
+
+.weather-container {
+    float: right;
+    padding-right: 30%;
+}
+
+.weather-container, .city {
     margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
+
+.dayOne {
+    background-color: #eee;
+    width: 300px;
+    text-align: center;
+    margin: 20px;
+}
+
+.col-md-2 {
+    display: inline-block;
 }

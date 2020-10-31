@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+
     <!-- Weather Dashboard header -->
     <div class="jumbotron">
         <div class="jumbotron-container">
             <h1>Weather Dashboard</h1>
         </div>
     </div>
+    <br>
     <!-- Container for content -->
     <!-- Want temperature, hummidity, wind speed, and UV Index -->
-    <div class="content-container">
+    <div class="search-container">
         <div class="row">
             <div class="search">
                 <h3>Search a City</h3>
@@ -34,26 +37,72 @@
 
                 <!-- List each city search in a table -->
                 <div class="cityTable" id="cityView"></div>
-
-                
             </div>
-            <!-- Weather information -->
-            <span class="weather">
-                <div class="row" id="forcastInfo">
+        </div>
+
+
+        <!-- Weather information -->
+        <div class="weather-container">
+            <div class="weather">
+                <div class="col-md-12">
                     <div class="city"></div>
-                    <div class="wind"></div>
-                    <div class="humidity"></div>
                     <div class="temp"></div>
+                    <div class="humidity"></div>
+                    <div class="wind"></div>
                 </div>
             </div>
-            
+
             <!-- Forcast information -->
+            <div class="forecast">
+                <div class="col-md-2">
+                    <div class="dateOne"></div>
+                    <div class="tempOne"></div>
+                    <div class="humidityOne"></div>
+                    <div class="windOne"></div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="dateTwo"></div>
+                    <div class="tempTwo"></div>
+                    <div class="humidityTwo"></div>
+                    <div class="windTwo"></div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="dateThree"></div>
+                    <div class="tempThree"></div>
+                    <div class="humidityThree"></div>
+                    <div class="windThree"></div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="dateFour"></div>
+                    <div class="tempFour"></div>
+                    <div class="humidityFour"></div>
+                    <div class="windFour"></div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="dateFive"></div>
+                    <div class="tempFive"></div>
+                    <div class="humidityFive"></div>
+                    <div class="windFive"></div>
+                </div>
+
+            </div>
         </div>
+
     </div>
+
+    </div>
+
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
