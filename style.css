@@ -39,17 +39,21 @@ button {
 
 .weather-container, .city {
     margin: 0 auto;
-    width: 300px;
+    width: 60%;
     text-align: center;
 }
 
 .dayOne {
     background-color: #eee;
-    width: 300px;
+    width: 60%;
     text-align: center;
     margin: 20px;
 }
 
-.col-md-2 {
-    display: inline-block;
+.forecast {
+    display: flex;
+    flex-direction: row;
+    margin-left: 425px;
+    padding: 20px;
+    margin-top: 30px;
 }
