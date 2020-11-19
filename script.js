@@ -1,6 +1,8 @@
 // Define global variables
 
 var yourCities = [];
+const m = moment();
+var startDate = m.format("L");
 
 var key = "c0bfbe029f5184838d438a684303b5b2";
 var units = "&units=imperial&appid=";
@@ -45,7 +47,7 @@ $("#searchButton").on("click", function (event) {
         console.log(response.wind.speed + " MPH");
         console.log(response.weather[0].description);
 
-        $(".city").html("<h1>" + response.name + " Today</h1>");
+        $(".city").html(response.name + " (" + startDate + ")");
         $(".temp").text("Temp: " + response.main.temp + "\u00B0F");
         $(".humidity").text("Humidity: " + response.main.humidity + "%");
         $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
@@ -63,9 +65,6 @@ $("#searchButton").on("click", function (event) {
 
             $(".index").text("UV index: " + response.value.toFixed(2));
 
-            if (response.value >= 0 && response.value <=2) {
-                document.querySelector("index").style.background="green";
-            }
         });
 
         // url for forecast for 5 days
@@ -76,23 +75,28 @@ $("#searchButton").on("click", function (event) {
             type: "GET",
         }).then(function (response) {
 
-            $(".dateOne").text(response.list[1].dt_txt);
+            var date1 = moment(startDate).add(1, "days").format("MM/DD/YYYY");
+            $(".dateOne").text(date1);
             $(".tempOne").text("Temp: " + response.list[1].main.temp + "\u00B0F");
             $(".humidityOne").text("Humidity: " + response.list[1].main.humidity + "%");
 
-            $(".dateTwo").text(response.list[9].dt_txt);
+            var date2 = moment(startDate).add(2, "days").format("MM/DD/YYYY");
+            $(".dateTwo").text(date2);
             $(".tempTwo").text("Temp: " + response.list[9].main.temp + "\u00B0F");
             $(".humidityTwo").text("Humidity: " + response.list[9].main.humidity + "%");
 
-            $(".dateThree").text(response.list[17].dt_txt);
+            var date3 = moment(startDate).add(3, "days").format("MM/DD/YYYY");
+            $(".dateThree").text(date3);
             $(".tempThree").text("Temp: " + response.list[17].main.temp + "\u00B0F");
             $(".humidityThree").text("Humidity: " + response.list[17].main.humidity + "%");
 
-            $(".dateFour").text(response.list[25].dt_txt);
+            var date4 = moment(startDate).add(4, "days").format("MM/DD/YYYY");
+            $(".dateFour").text(date4);
             $(".tempFour").text("Temp: " + response.list[25].main.temp + "\u00B0F");
             $(".humidityFour").text("Humidity: " + response.list[25].main.humidity + "%");
 
-            $(".dateFive").text(response.list[33].dt_txt);
+            var date5 = moment(startDate).add(5, "days").format("MM/DD/YYYY");
+            $(".dateFive").text(date5);
             $(".tempFive").text("Temp: " + response.list[33].main.temp + "\u00B0F");
             $(".humidityFive").text("Humidity: " + response.list[33].main.humidity + "%");
 
