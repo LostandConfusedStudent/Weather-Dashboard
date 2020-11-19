@@ -7,50 +7,14 @@ function initiate() {
     var searchButton = document.getElementById("searchButton");
     var clearHistory = document.getElementById("clearHistory");
     var history = document.getElementById("cityView");
-    var yourCities = JSON.parse(localStorage.getItem("yourCities")) || [];
-
-    searchButton.addEventListener("click", function () {
-        var searchInput = input.value;
-        citySearch(searchInput);
-        yourCities.push(searchInput);
-        localStorage.setItem("yourCities", JSON.stringify(yourCities));
-        renderyourCities();
-    })
-
-    clearHistory.addEventListener("click", function () {
-        yourCities = [];
-        renderyourCities();
-    })
-
-    function renderyourCities() {
-        history.innerHTML = "";
-        for (let i = 0; i < yourCities.length; i++) {
-            var historyCity = document.createElement("input");
-            historyCity.setAttribute("type", "text");
-            historyCity.setAttribute("readonly", true);
-            historyCity.setAttribute("value", yourCities[i]);
-            historyCity.addEventListener("click", function () {
-                citySearch(historyCity.value);
-            })
-            history.append(historyCity);
-        }
-    }
-
-    renderyourCities();
-    if (yourCities.length > 0) {
-        citySearch(yourCities[yourCities.length - 1]);
-    }
+    var yourCities = JSON.parse(localStorage.getItem("search")) || [];
 
     var key = "c0bfbe029f5184838d438a684303b5b2";
     var units = "&units=imperial&appid=";
 
     // Function to search city of interest
 
-    function citySearch() {
-        // Push cityInput to empty array youCity.
-        var cityInput = $("#yourCities").val();
-
-
+    function citySearch(cityInput) {
         // url for current weather
         var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + units + key;
 
@@ -165,37 +129,37 @@ function initiate() {
         });
     }
 
+    searchButton.addEventListener("click", function() {
+        var searchInput = input.value;
+        citySearch(searchInput);
+        yourCities.push(searchInput);
+        localStorage.setItem("search", JSON.stringify(yourCities));
+        renderYourCities();
+    })
 
-    // Button to erase input from local storage
-    $("#clearHistory").on("click", function () {
-        console.log("Clear button pressed");
-        $(".city").empty();
-        $(".wind").empty();
-        $(".humidity").empty();
-        $(".temp").empty();
-        $("#cityView").empty();
-        $("#index").empty();
+    clearHistory.addEventListener("click", function () {
+        yourCities = [];
+        renderYourCities();
+    })
 
-        $(".dateOne").empty();
-        $(".tempOne").empty();
-        $(".humidityOne").empty();
+    function renderYourCities() {
+        history.innerHTML = "";
+        for (let i = 0; i < yourCities.length; i++) {
+            const historyCity = document.createElement("input");
+            historyCity.setAttribute("type", "text");
+            historyCity.setAttribute("readonly", true);
+            historyCity.setAttribute("value", yourCities[i]);
+            historyCity.addEventListener("click", function () {
+                citySearch(historyCity.value);
+            })
+            history.append(historyCity);
+        }
+    }
 
-        $(".dateTwo").empty();
-        $(".tempTwo").empty();
-        $(".humidityTwo").empty();
-
-        $(".dateThree").empty();
-        $(".tempThree").empty();
-        $(".humidityThree").empty();
-
-        $(".dateFour").empty();
-        $(".tempFour").empty();
-        $(".humidityFour").empty();
-
-        $(".dateFive").empty();
-        $(".tempFive").empty();
-        $(".humidityFive").empty();
-    });
+    renderYourCities();
+    if (yourCities.length > 0) {
+        citySearch(yourCities[yourCities.length - 1]);
+    }
 };
 
 initiate();
