@@ -60,6 +60,12 @@ $("#searchButton").on("click", function (event) {
             // Print UV information
             console.log(response);
             console.log("UV index: " + response.value);
+
+            $(".index").text("UV index: " + response.value.toFixed(2));
+
+            if (response.value >= 0 && response.value <=2) {
+                document.querySelector("index").style.background="green";
+            }
         });
 
         // url for forecast for 5 days
@@ -69,62 +75,26 @@ $("#searchButton").on("click", function (event) {
             url: forecastURL,
             type: "GET",
         }).then(function (response) {
-            // Print dates and temps for next five days
-            console.log(response);
-            console.log(response.list[1].dt_txt);
-            console.log("Temp: " + response.list[1].main.temp);
-            console.log("Humidity: " + response.list[1].main.humidity);
-            console.log("Wind Speed: " + response.list[1].wind.speed);
-            console.log("------------------------------")
-
-            console.log(response.list[9].dt_txt);
-            console.log("Temp: " + response.list[9].main.temp);
-            console.log("Humidity: " + response.list[9].main.humidity);
-            console.log("Wind Speed: " + response.list[9].wind.speed);
-            console.log("------------------------------")
-
-            console.log(response.list[17].dt_txt);
-            console.log("Temp: " + response.list[17].main.temp);
-            console.log("Humidity: " + response.list[17].main.humidity);
-            console.log("Wind Speed: " + response.list[17].wind.speed);
-            console.log("------------------------------")
-
-            console.log(response.list[25].dt_txt);
-            console.log("Temp: " + response.list[25].main.temp);
-            console.log("Humidity: " + response.list[25].main.humidity);
-            console.log("Wind Speed: " + response.list[25].wind.speed);
-            console.log("------------------------------")
-
-            console.log(response.list[33].dt_txt);
-            console.log("Temp: " + response.list[33].main.temp);
-            console.log("Humidity: " + response.list[33].main.humidity);
-            console.log("Wind Speed: " + response.list[33].wind.speed);
-            console.log("------------------------------")
 
             $(".dateOne").text(response.list[1].dt_txt);
             $(".tempOne").text("Temp: " + response.list[1].main.temp + "\u00B0F");
             $(".humidityOne").text("Humidity: " + response.list[1].main.humidity + "%");
-            $(".windOne").text("Wind Speed: " + response.list[1].wind.speed + " MPH");
 
             $(".dateTwo").text(response.list[9].dt_txt);
             $(".tempTwo").text("Temp: " + response.list[9].main.temp + "\u00B0F");
             $(".humidityTwo").text("Humidity: " + response.list[9].main.humidity + "%");
-            $(".windTwo").text("Wind Speed: " + response.list[9].wind.speed + " MPH");
 
             $(".dateThree").text(response.list[17].dt_txt);
             $(".tempThree").text("Temp: " + response.list[17].main.temp + "\u00B0F");
             $(".humidityThree").text("Humidity: " + response.list[17].main.humidity + "%");
-            $(".windThree").text("Wind Speed: " + response.list[17].wind.speed + " MPH");
 
             $(".dateFour").text(response.list[25].dt_txt);
             $(".tempFour").text("Temp: " + response.list[25].main.temp + "\u00B0F");
             $(".humidityFour").text("Humidity: " + response.list[25].main.humidity + "%");
-            $(".windFour").text("Wind Speed: " + response.list[25].wind.speed + " MPH");
 
             $(".dateFive").text(response.list[33].dt_txt);
             $(".tempFive").text("Temp: " + response.list[33].main.temp + "\u00B0F");
             $(".humidityFive").text("Humidity: " + response.list[33].main.humidity + "%");
-            $(".windFive").text("Wind Speed: " + response.list[33].wind.speed + " MPH");
 
         });
 
@@ -141,6 +111,27 @@ $("#searchButton").on("click", function (event) {
         $(".humidity").empty();
         $(".temp").empty();
         $(".cityTable").empty();
+        $(".index").empty();
+
+        $(".dateOne").empty();
+        $(".tempOne").empty();
+        $(".humidityOne").empty();
+
+        $(".dateTwo").empty();
+        $(".tempTwo").empty();
+        $(".humidityTwo").empty();
+
+        $(".dateThree").empty();
+        $(".tempThree").empty();
+        $(".humidityThree").empty();
+
+        $(".dateFour").empty();
+        $(".tempFour").empty();
+        $(".humidityFour").empty();
+        
+        $(".dateFive").empty();
+        $(".tempFive").empty();
+        $(".humidityFive").empty();
     });
 });
 

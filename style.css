@@ -23,37 +23,33 @@ button {
     width: 30%;
 }
 
-.search {
+.search-container {
+    display: inline-block;
     width: 35%;
-    float: left;
 }
 
-.search-container {
+.container {
     position: relative;
 }
 
 .weather-container {
-    float: right;
-    padding-right: 30%;
-}
-
-.weather-container, .city {
-    margin: 0 auto;
-    width: 60%;
-    text-align: center;
-}
-
-.dayOne {
-    background-color: #eee;
-    width: 60%;
-    text-align: center;
-    margin: 20px;
+    display: inline-block;
+    position: absolute;
+    left: 400px;
+    width: 65%;
 }
 
 .forecast {
     display: flex;
     flex-direction: row;
-    margin-left: 425px;
-    padding: 20px;
+    margin-right: 30px;
     margin-top: 30px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.col-md-2 {
+    padding: 30px;
+    margin-right: 20px;
+    background-color: lightskyblue;
 }
