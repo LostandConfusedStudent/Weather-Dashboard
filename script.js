@@ -1,6 +1,5 @@
 function initiate() {
     // Define global variables
-    var yourCities = [];
     const m = moment();
     var startDate = m.format("L");
 
@@ -8,28 +7,28 @@ function initiate() {
     var searchButton = document.getElementById("searchButton");
     var clearHistory = document.getElementById("clearHistory");
     var history = document.getElementById("cityView");
-    var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+    var yourCities = JSON.parse(localStorage.getItem("yourCities")) || [];
 
-    searchButton.addEventListener("click", function() {
+    searchButton.addEventListener("click", function () {
         var searchInput = input.value;
         citySearch(searchInput);
-        searchHistory.push(searchInput);
-        localStorage.setItem("search", JSON.stringify(searchHistory));
-        renderSearchHistory();
+        yourCities.push(searchInput);
+        localStorage.setItem("yourCities", JSON.stringify(yourCities));
+        renderyourCities();
     })
 
     clearHistory.addEventListener("click", function () {
-        searchHistory = [];
-        renderSearchHistory();
+        yourCities = [];
+        renderyourCities();
     })
 
-    function renderSearchHistory() {
+    function renderyourCities() {
         history.innerHTML = "";
-        for (let i = 0; i < searchHistory.length; i++) {
+        for (let i = 0; i < yourCities.length; i++) {
             var historyCity = document.createElement("input");
-            // <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com"></input>
             historyCity.setAttribute("type", "text");
-            historyCity.setAttribute("value", searchHistory[i]);
+            historyCity.setAttribute("readonly", true);
+            historyCity.setAttribute("value", yourCities[i]);
             historyCity.addEventListener("click", function () {
                 citySearch(historyCity.value);
             })
@@ -37,9 +36,9 @@ function initiate() {
         }
     }
 
-    renderSearchHistory();
-    if (searchHistory.length > 0) {
-        citySearch(searchHistory[searchHistory.length - 1]);
+    renderyourCities();
+    if (yourCities.length > 0) {
+        citySearch(yourCities[yourCities.length - 1]);
     }
 
     var key = "c0bfbe029f5184838d438a684303b5b2";
@@ -48,25 +47,9 @@ function initiate() {
     // Function to search city of interest
 
     function citySearch() {
-
-        $("#cityView").empty();
-
-        for (var i = 0; i < yourCities.length; i++) {
-
-            var searchHistory = $("<button>");
-            searchHistory.addClass("newCityButton");
-            searchHistory.attr("yourCityInput", yourCities[i]);
-            searchHistory.text(yourCities[i]);
-            $("#cityView").append(searchHistory);
-        }
-    }
-
-    $("#searchButton").on("click", function (event) {
-        event.preventDefault();
-
         // Push cityInput to empty array youCity.
         var cityInput = $("#yourCities").val();
-        yourCities.push(cityInput);
+
 
         // url for current weather
         var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + units + key;
@@ -104,7 +87,20 @@ function initiate() {
                 console.log(response);
                 console.log("UV index: " + response.value);
 
-                $(".index").text("UV index: " + response.value.toFixed(2));
+                if (response.value >= 0 && response.value <=2) {
+                    document.getElementById("index").style.backgroundColor = "green";
+                    
+                } else if (response.value > 2 && response.value <= 5) {
+                    document.getElementById("index").style.backgroundColor = "yellow";
+
+                } else if (response.value > 5 && response.value <= 7) {
+                    document.getElementById("index").style.backgroundColor = "orange";
+
+                } else {
+                    document.getElementById("index").style.backgroundColor = "red";
+                }
+
+                $("#index").text("UV index: " + response.value.toFixed(2));
 
             });
 
@@ -167,43 +163,39 @@ function initiate() {
             });
 
         });
+    }
 
-        citySearch();
-        console.log(yourCities);
 
-        // Button to erase input from local storage
-        $("#clearHistory").on("click", function () {
-            console.log("Clear button pressed");
-            $(".city").empty();
-            $(".wind").empty();
-            $(".humidity").empty();
-            $(".temp").empty();
-            $("#cityView").empty();
-            $(".index").empty();
+    // Button to erase input from local storage
+    $("#clearHistory").on("click", function () {
+        console.log("Clear button pressed");
+        $(".city").empty();
+        $(".wind").empty();
+        $(".humidity").empty();
+        $(".temp").empty();
+        $("#cityView").empty();
+        $("#index").empty();
 
-            $(".dateOne").empty();
-            $(".tempOne").empty();
-            $(".humidityOne").empty();
+        $(".dateOne").empty();
+        $(".tempOne").empty();
+        $(".humidityOne").empty();
 
-            $(".dateTwo").empty();
-            $(".tempTwo").empty();
-            $(".humidityTwo").empty();
+        $(".dateTwo").empty();
+        $(".tempTwo").empty();
+        $(".humidityTwo").empty();
 
-            $(".dateThree").empty();
-            $(".tempThree").empty();
-            $(".humidityThree").empty();
+        $(".dateThree").empty();
+        $(".tempThree").empty();
+        $(".humidityThree").empty();
 
-            $(".dateFour").empty();
-            $(".tempFour").empty();
-            $(".humidityFour").empty();
+        $(".dateFour").empty();
+        $(".tempFour").empty();
+        $(".humidityFour").empty();
 
-            $(".dateFive").empty();
-            $(".tempFive").empty();
-            $(".humidityFive").empty();
-        });
+        $(".dateFive").empty();
+        $(".tempFive").empty();
+        $(".humidityFive").empty();
     });
-
-
-}
+};
 
 initiate();
