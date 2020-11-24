@@ -13,7 +13,6 @@ function initiate() {
     var units = "&units=imperial&appid=";
 
     // Function to search city of interest
-
     function citySearch(cityInput) {
         // url for current weather
         var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + units + key;
@@ -139,6 +138,7 @@ function initiate() {
 
     clearHistory.addEventListener("click", function () {
         yourCities = [];
+        window.localStorage.clear();
         renderYourCities();
     })
 
