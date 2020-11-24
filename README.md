@@ -11,4 +11,4 @@ This is the homework for week six. The objective is to build a weather applicati
 ## Links
 
 * https://github.com/LostandConfusedStudent/Weather-Dashboard
-* 
+* https://lostandconfusedstudent.github.io/Weather-Dashboard/
