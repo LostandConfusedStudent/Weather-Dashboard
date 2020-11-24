@@ -6,4 +6,9 @@ This is the homework for week six. The objective is to build a weather applicati
 
 ## Screenshots
 
+![Dashboard](assets/images/Dashboard.png)
+
 ## Links
+
+* https://github.com/LostandConfusedStudent/Weather-Dashboard
+* 
